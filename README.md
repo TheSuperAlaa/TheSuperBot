@@ -14,6 +14,11 @@
  
 * chmod +x launch.sh
 
+* git clone --recursive https://github.com/vysheng/tg.git && cd tg
+
+* ./configure
+
+* make
 
 * ./launch.sh install
 
