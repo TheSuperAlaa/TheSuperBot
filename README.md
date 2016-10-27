@@ -1,4 +1,4 @@
-ØÑíÞÉ ÊäÕíÈ ÓæÈÑ ÈæÊ
+Ø·Ø±ÙŠÙ‚Ø© ØªÙ†ØµÙŠØ¨ Ø³ÙˆØ¨Ø± Ø¨ÙˆØª
 
 * sudo apt-get update
 
@@ -6,10 +6,10 @@
 * sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev
 
 
-* git clone https://github.com/moodlIMyIl/DEVTSHAKE.git
+* git clone https://github.com/TheSuperAlaa/TheSuperBot.git
 
 
-* cd DEVTSHAKE
+* cd TheSuperBot
 
  
 * chmod +x launch.sh
