@@ -1,45 +1,35 @@
---[[ 
-    _____    _        _    _    _____    Dev @lIMyIl 
-   |_   _|__| |__    / \  | | _| ____|   Dev @li_XxX_il
-     | |/ __| '_ \  / _ \ | |/ /  _|     Dev @h_k_a
-     | |\__ \ | | |/ ___ \|   <| |___    Dev @Aram_omar22
-     |_||___/_| |_/_/   \_\_|\_\_____|   Dev @IXX_I_XXI
-       تعديل       CH > @lTSHAKEl_CH
---]]
-local function sudoteam(msg, matches)
-local mtn = matches[2]
-local link = matches[3]
-if not is_momod(msg) then
-return 'للادمنيه فقط '
+--Tag ppl with username and a msg after it
+local function tagall(cb_extra, success, result)
+    local receiver = cb_extra.receiver
+    local chat_id = "channel#id"..result.id
+    local text = ''
+    for k,v in pairs(result.members) do
+        if v.username then
+			text = text.."@"..v.username.."\n"
+		end
+    end
+	text = text.."\n"..cb_extra.msg_text
+	send_large_msg(receiver, text)
 end
-if matches[1] == 'b' then
-  return '<b>'..mtn..'</b>'
+local function run(msg, matches)
+    local receiver = get_receiver(msg)
+	if not is_momod(msg) then 
+		return "For moderators only !"
+	end
+	if matches[1] then
+		chat_info(receiver, tagall, {receiver = receiver,msg_text = matches[1]})
+	end
+	return
+end
 
-elseif matches[1] == 'c' then
-  return '<code>'..mtn..'</code>'
 
-elseif matches[1] == 'hyper' then
-  return '<a href="'..link..'">'..mtn..'</a>'
-elseif matches[1] == 'i' then
-  return '<i>'..mtn..'</i>'
-end
-end
 return {
-  description = "تست", 
-  usage = "تست",
+  description = "Will tag all ppl with a msg.",
+  usage = {
+    "tagall [msg]."
+  },
   patterns = {
-    "^[!#/]([Cc]) (.*)$",
-    "^[!#/]([Ii]) (.*)$",
-    "^[!#/]([Bb]) (.*)$",
-    "^[!#/]([Hh]yper) (.*) (.*)$"
-  }, 
-  run = sudoteam 
+    "^[#!/]tagall +(.+)$"
+  },
+  run = run
 }
---[[ 
-    _____    _        _    _    _____    Dev @lIMyIl 
-   |_   _|__| |__    / \  | | _| ____|   Dev @li_XxX_il
-     | |/ __| '_ \  / _ \ | |/ /  _|     Dev @h_k_a
-     | |\__ \ | | |/ ___ \|   <| |___    Dev @Aram_omar22
-     |_||___/_| |_/_/   \_\_|\_\_____|   Dev @IXX_I_XXI
-       تعديل       CH > @lTSHAKEl_CH
---]]
